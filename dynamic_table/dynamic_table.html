@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>TABELLA DINAMICA</title>
+<style>
+table.tabella{
+	border: 2px solid #CCCCCC;
+}
+table.tabella th{
+	background-color : blue;
+	font-size : 16px;
+	color : white;
+	padding : 2px;
+}
+table.tabella td{
+	background-color : cyan;
+	color : back;
+	padding : 2px;
+}
+</style>
+
+<script type='text/javascript'>
+
+
+function Leggere(id_table){
+
+let contatto=   [
+{"nome":"Edoardo", "cognome":"Rossi","matricola":"S123456","corsi_precedenti":2, "laureato":true  },{"nome":"Vincenzo", "cognome":"Raimondo","matricola":"S153456",    "corsi_precedenti":5, "laureato":true  },{"nome":"Pippo", "cognome":"Zagaria", "matricola":"S193456",    "corsi_precedenti":4, "laureato":true  }];
+ 
+for(const c of contatto){
+   
+		array(id_table,c.nome,c.cognome,c.matricola);
+	 
+   	     } 
+		}
+ 
+	function array(id_table,nome ,cognome, matricola ){
+			
+	var table = document.getElementById(id_table);
+	var tbody = table.getElementsByTagName('tbody')[0];
+	var colonne = table.getElementsByTagName('th').length;	
+ 	var tr = document.createElement('tr');
+ 	
+	
+ 
+	for(var i=0; i<colonne; i++){
+		var td = document.createElement('td');
+	switch (i) {
+		case 0:
+		var tx = document.createTextNode(nome );
+			break;
+		case 1:
+		var tx = document.createTextNode(cognome );
+		break;
+		case 2:
+		var tx = document.createTextNode(matricola );
+		break;
+		case 3:
+		var tx = document.createTextNode(laureato );
+		break;
+		default:
+		var tx = document.createTextNode('nulla' );
+		break;
+			}
+			td.appendChild(tx );
+         tr.appendChild(td);
+	}	
+
+ 
+     
+
+tbody.appendChild(tr);	 
+	   
+	
+ 
+}
+       
+		
+ 
+        
+/* 	for (let riga = 0; riga < contatto.getGetLength[0]; riga++)
+            {
+                //parte dalla colonna 1
+                for (let colonna = 0; colonna < contatto.GetLength[1]; colonna++)
+                {
+					var td = document.createElement('td');
+	             	var tx = document.createTextNode(contatto[riga,colonna]);
+		            td.appendChild(tx);
+		            tr.appendChild(td);
+                     
+                }
+            }
+        } */
+		
+		 
+	 
+ 
+
+
+// FABIO DONATANTONIO 2010 - http://www.donatantonio.it
+/*
+   - Preleviamo il riferimento alla tabella e al tbody
+   -+
+   - Calcoliamo il numero di colonne presenti
+   - Cicliamo e per ogni cella nuova chiediamo da prompt il testo
+   - Nidifichiamo il testo nel td e il td nel tr
+   - Aggiungiamo la nuova riga tr nel tbody
+
+*/
+function aggiungiRiga(id_table){
+	var table = document.getElementById(id_table);
+	var tbody = table.getElementsByTagName('tbody')[0];
+	var colonne = table.getElementsByTagName('th').length;	
+	var tr = document.createElement('tr');
+	for(var i=0; i<colonne; i++){
+		var td = document.createElement('td');
+		var tx = document.createTextNode(prompt("Inserisci testo per cella "+(i+1),""));
+		td.appendChild(tx);
+		tr.appendChild(td);
+	}
+	tbody.appendChild(tr);
+}
+</script>
+
+</head>
+
+<body onload="Leggere('my_table')">
+ 
+	<table border='2' id='my_table' class='tabella' cellspacing='0' cellpadding='0'>
+	<thead><tr><th>Nome</th><th>Cognome</th><th>matricola</th><th>laureato</th></tr></thead>
+	<tbody>
+	
+	</tbody>
+	</table><br/>
+	<!--<input type='button' value='Aggiungi riga' onClick="aggiungiRiga('my_table')" />-->
+</body>
+
+</html>
